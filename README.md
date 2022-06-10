@@ -1,10 +1,10 @@
-# Ryokan-Review-W#Onsen Ryokan Review Website
+# Ryokan-Review-W
 
 **Fullstack Project**
 
 **Premise**
 
-I really love to travel to Japan and enjoy local Onsen Ryokan there, this website is about ryokan reveiw
+I really love travel to Japan and enjoy local Onsen Ryokan there, this website is about ryokan reveiw
 
 **User Story**
 
