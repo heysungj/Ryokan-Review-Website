@@ -11,16 +11,22 @@ I really love to travel to Japan and enjoy local Onsen Ryokan there, this websit
 As a user I want to
 
 • Be able to sign up and login
+
 • Be able to create new ryokan page and review it
+
 • Be able to add a review at existing ryokan
+
 • Be able to see your review history by logging into your account
+
 • Be able to edit and delete your previous reviews
+
 • Be able to see ryokan's location
+
 • Be able to do ryokan search by input city name
 
 **The Wireframes:**
 
-![alt text](https://github.com/heysungj/Ryokan-Review-Website/main/public/photos/main.jpg)
+![alt text](https://github.com/heysungj/Ryokan-Review-Website/blob/main/public/photos/main.jpg)
 
 The ERD:
 
