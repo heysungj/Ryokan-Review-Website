@@ -40,6 +40,8 @@ Every Ryokan can have many reviews
 
 Every user can add many reviews
 
+![alt text](https://github.com/heysungj/Ryokan-Review-Website/blob/main/public/photos/ERD.jpg)
+
 **Route Table:**  
 •Index GET /ryokans
 

@@ -1,0 +1,27 @@
+{
+  "name": "ryokan-review-website",
+  "version": "1.0.0",
+  "description": "**Fullstack Project**",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/heysungj/Ryokan-Review-Website.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/heysungj/Ryokan-Review-Website/issues"
+  },
+  "homepage": "https://github.com/heysungj/Ryokan-Review-Website#readme",
+  "dependencies": {
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "liquid-express-views": "^1.0.8",
+    "method-override": "^3.0.0",
+    "mongoose": "^6.3.6",
+    "morgan": "^1.10.0"
+  }
+}
