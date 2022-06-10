@@ -20,7 +20,7 @@ As a user I want to
 
 **The Wireframes:**
 
-![alt text](https://github.com/heysungj/Ryokan-Review-Website/public/photos/main.jpg)
+![alt text](https://github.com/heysungj/Ryokan-Review-Website/main/public/photos/main.jpg)
 
 The ERD:
 
