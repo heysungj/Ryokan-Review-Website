@@ -1,4 +1,4 @@
-# Ryokan-Review-W
+# Ryokan-Review-Website
 
 **Fullstack Project**
 
