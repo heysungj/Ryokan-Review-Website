@@ -28,14 +28,52 @@ As a user I want to
 
 ![alt text](https://github.com/heysungj/Ryokan-Review-Website/blob/main/public/photos/main.jpg)
 
-The ERD:
+![alt text](https://github.com/heysungj/Ryokan-Review-Website/blob/main/public/photos/show.jpg)
 
-Route Table:
+![alt text](https://github.com/heysungj/Ryokan-Review-Website/blob/main/public/photos/new.jpg)
 
-Technologies Used:
+![alt text](https://github.com/heysungj/Ryokan-Review-Website/blob/main/public/photos/addReview.jpg)
+![alt text](https://github.com/heysungj/Ryokan-Review-Website/blob/main/public/photos/account.jpg)
 
-How To Use:
+**The ERD:**  
+Every Ryokan can have many reviews
 
-MVP Requirements:
+Every user can add many reviews
 
-Stretch goals / ICE BOX:
+**Route Table:**  
+•Index GET /ryokans
+
+•Show GET /ryokans/:id
+
+•New GET /ryokans/new
+
+•Create POST /ryokans
+
+•Edit GET /ryokans/edit/:id
+
+•Update PUT /ryokans/:id
+
+•CreateReview GET /ryokans/addReview/:id
+
+•Create POST /ryokans/addReview/:id
+
+•Destroy DELETE /Ryokans/review/:id
+
+•SignUp GET /ryokans/signup
+
+•CreateSignUp POST /ryokans/signup
+
+•Login GET /ryokans/login
+
+•CreateLogin POST /ryokans/login
+
+•Account GET /ryokans/account/:userId
+
+**Technologies Used:**
+JavaScript, Liquid, Express, Mongoose, MongdoDB, Node
+
+**How To Use:**
+
+**MVP Requirements:**
+
+**Stretch goals / ICE BOX:**
