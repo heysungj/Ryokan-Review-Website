@@ -8,7 +8,7 @@ const ryokanSchema = new Schema(
   {
     name: { type: String, required: true },
     address: { type: String, required: true },
-    img: { type: String, required: true },
+    img: [{ type: String, required: true }],
     tel: { type: String, required: true },
     reviews: [{ type: Schema.Types.ObjectId, ref: "Review" }],
   },

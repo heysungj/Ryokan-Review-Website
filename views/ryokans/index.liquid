@@ -1,0 +1,18 @@
+{% layout "layout.liquid" %} {% block content %}
+<div>
+  <a href=""><button>Create A New Fruit</button></a>
+
+  {% for ryokan in ryokans %}
+  <article>
+    <div class="container">
+      <a href="/ryokans/{{ ryokan._id }}">
+        <h2>
+          {{ ryokan.name }}
+        </h2>
+        <img src="{{ ryokan.img[0] }}" alt="" />
+      </a>
+    </div>
+  </article>
+  {% endfor %}
+</div>
+{% endblock %}
