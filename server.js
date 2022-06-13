@@ -8,10 +8,12 @@ const morgan = require("morgan"); //import morgan
 const methodOverride = require("method-override");
 const mongoose = require("./models/connection");
 const path = require("path");
+const session = require("express-session");
+const MongoStore = require("connect-mongo");
 
 const RyokanRouter = require("./controllers/ryokans");
 // const ReviewRouter = require("./controllers/reviews");
-// const UserRouter = require("./controllers/users");
+const UserRouter = require("./controllers/users");
 
 ////////////////////////////////////////////////
 // Our Models
@@ -35,11 +37,22 @@ app.use(methodOverride("_method")); // override for put and delete requests from
 app.use(express.urlencoded({ extended: true })); // parse urlencoded request bodies
 app.use(express.static(path.join(__dirname, "public"))); // serve files from public statically
 
+// middleware to setup session
+// This now adds a property to the request object (req.session), we can use this object to store data between requests. Perfect for storing whether the user is logged in or not!
+
+app.use(
+  session({
+    secret: process.env.SECRET,
+    store: MongoStore.create({ mongoUrl: process.env.DATABASE_URL }),
+    saveUninitialized: true,
+    resave: false,
+  })
+);
 ////////////////////////////////////////////
 // Routes
 ////////////////////////////////////////////
 app.use("/ryokans", RyokanRouter); //send all '/ryokans' routs to ryokan.js
-// app.use("/user", UserRouter); // send all "/user" routes to user router
+app.use("/user", UserRouter); // send all "/user" routes to user router
 // app.use("/reviews", ReviewRouter); // send all "/reviews" routes to review router
 
 app.get("/", (req, res) => {
