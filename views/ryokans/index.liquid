@@ -1,5 +1,14 @@
 {% layout "layout.liquid" %} {% block content %}
 <div>
+  {% if login %}
+  <div>
+    <a href="/user/logout"><button>Logout</button></a>
+    <a href="/user/myaccount"><button>My Account</button></a>
+  </div>
+  {% else %}
+  <a href="/user/signup"><button>Signup</button></a>
+  <a href="/user/login"><button>Login</button></a>
+  {% endif %}
   <div>
     <a href=""><button>Create A New Ryokan</button></a>
   </div>

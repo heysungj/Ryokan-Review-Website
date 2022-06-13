@@ -18,7 +18,11 @@ router.get("/", async (req, res) => {
   try {
     const ryokans = await Ryokan.find();
     console.log(ryokans);
-    res.render("ryokans/index.liquid", { ryokans });
+    console.log(req.session.loggedIn);
+    res.render("ryokans/index.liquid", {
+      ryokans,
+      login: req.session.loggedIn,
+    });
   } catch (e) {
     console.log(e);
     res.json({ error: e });
