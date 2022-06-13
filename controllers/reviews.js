@@ -1,49 +1,52 @@
-// ////////////////////////////////////////
-// // Import Dependencies
-// ////////////////////////////////////////
-// const express = require("express");
-// const Review = require("../models/review");
+////////////////////////////////////////
+// Import Dependencies
+////////////////////////////////////////
+const express = require("express");
+const Review = require("../models/review");
 
-// /////////////////////////////////////////
-// // Create Route
-// /////////////////////////////////////////
-// const router = express.Router();
+/////////////////////////////////////////
+// Create Route
+/////////////////////////////////////////
+const router = express.Router();
 
-// /////////////////////////////////////////
-// // Routes
-// /////////////////////////////////////////
-// router.use((req, res, next) => {
-//   if (req.session.loggedIn) {
-//     next();
-//   } else {
-//     res.redirect("/user/login");
-//   }
-// });
+/////////////////////////////////////////
+// Routes
+/////////////////////////////////////////
+// edit route
+router.get("/:id/edit", (req, res) => {
+  // get the id from params
+  const reviewId = req.params.id;
+  // get the fruit from the database
+  Review.findById(reviewId)
+    .populate("ryokan")
+    .exec(function (err, review) {
+      console.log(review.ryokan);
+      // render edit page and send review data
+      res.render("reviews/edit.liquid", {
+        review,
+        ryokan: review.ryokan,
+      });
+    });
+});
 
-// // The Signup Routes (Get => form, post => submit form)
-// router.get("/new", (req, res) => {
-//   res.render("reviews/new.liquid", {
-//     username: req.session.username,
-//     userId: req.session.userId,
-//     ryokanId: req.query.ryokanId,
-//     ryokanName: req.query.ryokanName,
-//   });
-// });
+//update route
+router.put("/:id", (req, res) => {
+  // get the id from params
+  const id = req.params.id;
+  // update the review
+  Review.findByIdAndUpdate(id, req.body, { new: true })
+    .then((review) => {
+      // redirect to main page after updating
+      res.redirect(`/ryokans/${review.ryokan}`);
+    })
+    // send error as json
+    .catch((error) => {
+      console.log(error);
+      res.json({ error });
+    });
+});
 
-// router.post("/new", (req, res) => {
-//   Review.create(req.body)
-//     .then((review) => {
-//       // redirect user to index page if successfully created item
-//       res.redirect("/ryokans/:ryokanId");
-//     })
-//     // send error as json
-//     .catch((error) => {
-//       console.log(error);
-//       res.json({ error });
-//     });
-// });
-
-// //////////////////////////////////////////
-// // Export the Router
-// //////////////////////////////////////////
-// module.exports = router;
+//////////////////////////////////////////
+// Export the Router
+//////////////////////////////////////////
+module.exports = router;

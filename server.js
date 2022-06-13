@@ -53,7 +53,7 @@ app.use(
 ////////////////////////////////////////////
 app.use("/ryokans", RyokanRouter); //send all '/ryokans' routs to ryokan.js
 app.use("/user", UserRouter); // send all "/user" routes to user router
-// app.use("/reviews", ReviewRouter); // send all "/reviews" routes to review router
+app.use("/reviews", ReviewRouter); // send all "/reviews" routes to review router
 
 app.get("/", (req, res) => {
   res.send("hello world");
