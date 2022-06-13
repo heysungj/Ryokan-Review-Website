@@ -1,0 +1,33 @@
+{% layout "layout.liquid" %} {% block content %}
+<div>
+  <article>
+    <h2>
+      {{ ryokan.name }}
+    </h2>
+    <h3>Address: {{ ryokan.address }}</h3>
+    <h3>Tel: {{ ryokan.tel }}</h3>
+
+    {% for review in reviews %}
+    <h5>Title: {{ review.title }}</h5>
+    <p>User: {{ review.user }}</p>
+    <p>Rating: {{ review.rating }}</p>
+    <p>
+      Content: <br />
+      {{ review.content }}
+    </p>
+    {% for photo in review.photo %}
+    <h5>photo</h5>
+    <img src="{{ photo }}" alt="" />
+    {% endfor %}
+
+    <a href="/reviews/{{ review._id }}/edit"><button>Edit</button></a>
+    <form action="/reviews/{{ review._id }}?_method=DELETE" method="POST">
+      <input type="submit" value="Delete" />
+    </form>
+
+    {% endfor %}
+
+    <a href="/ryokans/"><button>Back to Main</button></a>
+  </article>
+</div>
+{% endblock %}

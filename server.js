@@ -9,10 +9,9 @@ const methodOverride = require("method-override");
 const mongoose = require("./models/connection");
 const path = require("path");
 
-const seedData = require("./models/seedData");
-const Ryokan = require("./models/ryokan");
-const Review = require("./models/review");
-const User = require("./models/user");
+const RyokanRouter = require("./controllers/ryokans");
+// const ReviewRouter = require("./controllers/reviews");
+// const UserRouter = require("./controllers/users");
 
 ////////////////////////////////////////////////
 // Our Models
@@ -39,21 +38,14 @@ app.use(express.static(path.join(__dirname, "public"))); // serve files from pub
 ////////////////////////////////////////////
 // Routes
 ////////////////////////////////////////////
+app.use("/ryokans", RyokanRouter); //send all '/ryokans' routs to ryokan.js
+// app.use("/user", UserRouter); // send all "/user" routes to user router
+// app.use("/reviews", ReviewRouter); // send all "/reviews" routes to review router
+
 app.get("/", (req, res) => {
-  res.send("your server is running... better catch it.");
+  res.send("hello world");
 });
 
-app.get("/ryokans", async (req, res) => {
-  // find all the ryokans
-  try {
-    const ryokans = await Ryokan.find();
-    console.log(ryokans);
-    res.render("ryokans/index.liquid", { ryokans });
-  } catch (e) {
-    console.log(e);
-    res.json({ error: e });
-  }
-});
 //////////////////////////////////////////////
 // Server Listener
 //////////////////////////////////////////////

@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 
 const reviewSchema = new Schema(
   {
+    ryokan: { type: Schema.Types.ObjectId, ref: "Ryokan" },
     title: {
       type: String,
       required: true,
