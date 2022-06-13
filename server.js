@@ -12,7 +12,7 @@ const session = require("express-session");
 const MongoStore = require("connect-mongo");
 
 const RyokanRouter = require("./controllers/ryokans");
-// const ReviewRouter = require("./controllers/reviews");
+const ReviewRouter = require("./controllers/reviews");
 const UserRouter = require("./controllers/users");
 
 ////////////////////////////////////////////////

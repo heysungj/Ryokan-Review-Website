@@ -56,6 +56,7 @@ router.post("/login", async (req, res) => {
         if (result) {
           // store some properties in the session object
           req.session.username = username;
+          req.session.userId = user._id;
           req.session.loggedIn = true;
           // redirect to fruits page if successful
           res.redirect("/ryokans");

@@ -13,12 +13,20 @@ const router = express.Router();
 /////////////////////////////////////////
 // Routes
 /////////////////////////////////////////
+router.use((req, res, next) => {
+  if (req.session.loggedIn) {
+    next();
+  } else {
+    res.redirect("/user/login");
+  }
+});
+
 router.get("/", async (req, res) => {
   // find all the ryokans
   try {
     const ryokans = await Ryokan.find();
     console.log(ryokans);
-    console.log(req.session.loggedIn);
+    console.log(req.session);
     res.render("ryokans/index.liquid", {
       ryokans,
       login: req.session.loggedIn,
@@ -38,8 +46,31 @@ router.get("/:id", async (req, res) => {
       res.render("ryokans/show.liquid", {
         ryokan,
         reviews: ryokan.reviews,
+        username: req.session.username,
+        userId: req.session.userId,
+        id: req.params.id,
       });
     });
+});
+
+router.post("/:id/reviews/new", async (req, res) => {
+  const id = req.params.id;
+  try {
+    const newReview = await Review.create(req.body);
+    await Ryokan.findOneAndUpdate(
+      { _id: id },
+      {
+        $push: { reviews: newReview._id },
+      }
+    );
+
+    console.log(newReview);
+    // redirect user to index page if successfully created item
+    res.redirect(`/ryokans/${id}`);
+  } catch (error) {
+    console.log(error);
+    res.json({ error });
+  }
 });
 
 //////////////////////////////////////////

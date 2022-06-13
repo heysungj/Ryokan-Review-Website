@@ -18,6 +18,7 @@ const userId1 = mongoose.Types.ObjectId();
 const initialUser = {
   _id: userId1,
   username: "initialUser",
+  password: "1234567",
   email: "123456@getMaxListeners.com",
   review: [reviewId1, reviewId2, reviewId4],
 };
