@@ -46,6 +46,21 @@ router.put("/:id", (req, res) => {
     });
 });
 
+router.delete("/:id", (req, res) => {
+  // get the id from params
+  const id = req.params.id;
+  // delete the fruit
+  Review.findByIdAndRemove(id)
+    .then((review) => {
+      // redirect to main page after deleting
+      res.redirect(`/ryokans/${review.ryokan}`);
+    })
+    // send error as json
+    .catch((error) => {
+      console.log(error);
+      res.json({ error });
+    });
+});
 //////////////////////////////////////////
 // Export the Router
 //////////////////////////////////////////
