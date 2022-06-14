@@ -25,21 +25,38 @@ router.use((req, res, next) => {
 router.get("/", async (req, res) => {
   // search bar result
   const { name } = req.query;
-  const ryokanSearchData = await Ryokan.find({
-    name: { $regex: name, $options: "i" },
-  });
-  console.log(ryokanSearchData);
-  // render results if have
-  if (ryokanSearchData) {
-    try {
-      res.render("ryokans/index.liquid", {
-        ryokanSearchData,
-        login: req.session.loggedIn,
-        username: req.session.username,
-      });
-    } catch (e) {
-      console.log(e);
-      res.json({ error: e });
+  if (name !== undefined) {
+    const ryokanSearchData = await Ryokan.find({
+      name: { $regex: name || "", $options: "i" },
+    });
+
+    // render results if have
+    if (ryokanSearchData.length >= 0) {
+      try {
+        res.render("ryokans/index.liquid", {
+          ryokans: ryokanSearchData,
+          login: req.session.loggedIn,
+          username: req.session.username,
+        });
+      } catch (e) {
+        console.log(e);
+        res.json({ error: e });
+      }
+    } else {
+      // find all the ryokans
+      try {
+        const ryokans = await Ryokan.find();
+        // console.log(ryokans);
+        // console.log(req.session);
+        res.render("ryokans/index.liquid", {
+          ryokans,
+          login: req.session.loggedIn,
+          username: req.session.username,
+        });
+      } catch (e) {
+        console.log(e);
+        res.json({ error: e });
+      }
     }
   } else {
     // find all the ryokans

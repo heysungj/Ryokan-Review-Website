@@ -1,11 +1,13 @@
 {% layout "layout.liquid" %} {% block content %}
 <div>
+  <a href="/ryokans"><button>Home</button></a>
+</div>
+<div>
   <form action="/ryokans" method="GET">
     <input type="text" name="name" id="" placeholder="Search Ryokan" />
     <button>search</button>
   </form>
   {% if login %}
-
   <div>
     <a href="/user/logout"><button>Logout</button></a>
     <a href="/user/myaccount"><button>My Account</button></a>
