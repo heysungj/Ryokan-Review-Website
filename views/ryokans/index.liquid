@@ -1,6 +1,11 @@
 {% layout "layout.liquid" %} {% block content %}
 <div>
+  <form action="/ryokans" method="GET">
+    <input type="text" name="name" id="" placeholder="Search Ryokan" />
+    <button>search</button>
+  </form>
   {% if login %}
+
   <div>
     <a href="/user/logout"><button>Logout</button></a>
     <a href="/user/myaccount"><button>My Account</button></a>
@@ -8,7 +13,12 @@
   {% else %}
   <a href="/user/signup"><button>Signup</button></a>
   <a href="/user/login"><button>Login</button></a>
-  {% endif %} {% for ryokan in ryokans %}
+
+  {% endif %}
+  <div>
+    <h5>Hello {{ username }}</h5>
+  </div>
+  {% for ryokan in ryokans %}
   <article>
     <div class="container">
       <a href="/ryokans/{{ ryokan._id }}">

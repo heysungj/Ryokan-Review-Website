@@ -1,7 +1,7 @@
 {% layout "layout.liquid" %} {% block content %}
 
 <div>
-    <a href="/ryokans/"><button>Home</button></a>
+    <a href="/ryokans"><button>Home</button></a>
     </div>
   {% if login %}
   <div>
@@ -18,7 +18,9 @@
   <a href="/user/login"><button>Login</button></a>
 </div>
   {% endif %}
-
+  <div>
+    <h5>Hello {{ username }}</h5>
+  </div>
   <div>
     <article>
       <h2>
@@ -36,8 +38,8 @@
         Content: <br />
         {{ review.content }}
       </p>
-      {% for photo in review.photo %}
       <h5>photo</h5>
+      {% for photo in review.photo %}
       <img src="{{ photo }}" alt="" />
       {% endfor %}
 

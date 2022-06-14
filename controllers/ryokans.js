@@ -18,23 +18,44 @@ router.use((req, res, next) => {
   if (req.session.loggedIn) {
     next();
   } else {
-    res.redirect("/user/login");
+    res.redirect("/user/signup");
   }
 });
 
 router.get("/", async (req, res) => {
-  // find all the ryokans
-  try {
-    const ryokans = await Ryokan.find();
-    console.log(ryokans);
-    console.log(req.session);
-    res.render("ryokans/index.liquid", {
-      ryokans,
-      login: req.session.loggedIn,
-    });
-  } catch (e) {
-    console.log(e);
-    res.json({ error: e });
+  // search bar result
+  const { name } = req.query;
+  const ryokanSearchData = await Ryokan.find({
+    name: { $regex: name, $options: "i" },
+  });
+  console.log(ryokanSearchData);
+  // render results if have
+  if (ryokanSearchData) {
+    try {
+      res.render("ryokans/index.liquid", {
+        ryokanSearchData,
+        login: req.session.loggedIn,
+        username: req.session.username,
+      });
+    } catch (e) {
+      console.log(e);
+      res.json({ error: e });
+    }
+  } else {
+    // find all the ryokans
+    try {
+      const ryokans = await Ryokan.find();
+      // console.log(ryokans);
+      // console.log(req.session);
+      res.render("ryokans/index.liquid", {
+        ryokans,
+        login: req.session.loggedIn,
+        username: req.session.username,
+      });
+    } catch (e) {
+      console.log(e);
+      res.json({ error: e });
+    }
   }
 });
 
@@ -50,30 +71,27 @@ router.post("/new", (req, res) => {
 
 // show ryokan page
 router.get("/:id", async (req, res) => {
-  Ryokan.findById(req.params.id)
-    .populate({
-      path: "reviews",
-      populate: {
-        path: "user",
-        model: "User",
-      },
-    })
-    .exec(function (err, ryokan) {
-      const singleReview = Review.find({
-        ryokan: req.params.id,
-        user: req.session.userId,
-      });
-      console.log(ryokan.reviews);
-      res.render("ryokans/show.liquid", {
-        login: req.session.loggedIn,
-        ryokan,
-        reviews: ryokan.reviews,
-        username: req.session.username,
-        userId: req.session.userId,
-        id: req.params.id,
-        show: singleReview ? false : true,
-      });
-    });
+  const ryokan = await Ryokan.findById(req.params.id).populate({
+    path: "reviews",
+    populate: {
+      path: "user",
+      model: "User",
+    },
+  });
+  const singleReview = await Review.find({
+    ryokan: req.params.id,
+    user: req.session.userId,
+  });
+  console.log(singleReview);
+  res.render("ryokans/show.liquid", {
+    login: req.session.loggedIn,
+    ryokan,
+    reviews: ryokan.reviews,
+    username: req.session.username,
+    userId: req.session.userId,
+    id: req.params.id,
+    show: singleReview.length === 0 ? true : false,
+  });
 });
 
 router.post("/:id/reviews/new", async (req, res) => {
@@ -87,7 +105,7 @@ router.post("/:id/reviews/new", async (req, res) => {
       }
     );
 
-    console.log(newReview);
+    // console.log(newReview);
     // redirect user to index page if successfully created item
     res.redirect(`/ryokans/${id}`);
   } catch (error) {
