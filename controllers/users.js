@@ -3,6 +3,7 @@
 ////////////////////////////////////////
 const express = require("express");
 const User = require("../models/user");
+const Review = require("../models/review");
 const bcrypt = require("bcrypt");
 
 /////////////////////////////////////////
@@ -76,11 +77,29 @@ router.post("/login", async (req, res) => {
     });
 });
 
+// logout route
 router.get("/logout", (req, res) => {
   // destroy session and redirect to main page
   req.session.destroy((err) => {
     res.redirect("/ryokans");
   });
+});
+// my account route
+router.get("/myaccount", (req, res) => {
+  let id = req.session.userId;
+  Review.find({ user: id })
+    .then((reviews) => {
+      // render my account page
+      res.render("user/myaccount.liquid", {
+        reviews,
+        username: req.session.username,
+      });
+    })
+    // send error as json
+    .catch((error) => {
+      console.log(error);
+      res.json({ error });
+    });
 });
 //////////////////////////////////////////
 // Export the Router

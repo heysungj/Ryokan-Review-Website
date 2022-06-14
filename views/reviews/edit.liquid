@@ -1,5 +1,8 @@
 {% layout "layout.liquid" %} {% block content %}
 <div>
+  <a href="/ryokans/"><button>Home</button></a>
+</div>
+<div>
   <form action="/reviews/{{ review._id }}?_method=PUT" method="post">
     <fieldset>
       <label> {{ ryokan.name }} </label>

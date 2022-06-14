@@ -1,0 +1,26 @@
+{% layout "layout.liquid" %} {% block content %}
+<div>
+  <a href="/ryokans/"><button>Home</button></a>
+</div>
+<div>
+  <a href="/user/signup"><button>Signup</button></a>
+  <a href="/user/login"><button>Login</button></a>
+
+  <div>
+    <a href=""><button>Create A New Ryokan</button></a>
+  </div>
+  <h4>User: {{ username }}</h4>
+  {% for review in reviews %}
+  <article>
+    <div class="container">
+      <a href="/ryokans/{{ review.ryokan }}">
+        <h5>Title: {{ review.title }}</h5>
+      </a>
+      <p>Rating: {{ review.rating }}</p>
+      <p>Content: {{ review.content }}</p>
+      <label for="">Photo: <img src="{{ review.photo }}" alt="" /></label>
+    </div>
+  </article>
+  {% endfor %}
+</div>
+{% endblock %}
