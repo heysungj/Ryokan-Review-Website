@@ -49,6 +49,8 @@ router.get("/:id", async (req, res) => {
       },
     })
     .exec(function (err, ryokan) {
+      const singleReview = Review.find({ user: req.session.userId });
+
       console.log(ryokan.reviews);
       res.render("ryokans/show.liquid", {
         login: req.session.loggedIn,
@@ -57,6 +59,7 @@ router.get("/:id", async (req, res) => {
         username: req.session.username,
         userId: req.session.userId,
         id: req.params.id,
+        show: singleReview ? false : true,
       });
     });
 });

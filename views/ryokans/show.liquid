@@ -40,48 +40,56 @@
       <img src="{{ photo }}" alt="" />
       {% endfor %}
 
+      <!-- check if current user  -->
+      {% if username == review.user.username %}
       <a href="/reviews/{{ review._id }}/edit"><button>Edit</button></a>
       <form action="/reviews/{{ review._id }}?_method=DELETE" method="POST">
         <input type="submit" value="Delete" />
       </form>
-
+      {% endif %}
       {% endfor %}
 
-      <div>
-        <form action="/ryokans/{{ id }}/reviews/new" method="post">
-          <fieldset>
-            <legend>Create a New Review</legend>
-            <label> Ryokan:{{ ryokanName }} </label>
-            <label>
-              Title:<input type="text" name="title" placeholder="enter title" />
-            </label>
-            <label for="">User: {{ username }}</label>
-            <label for="rating"> Rating</label>
-            <select name="rating">
-              <option value="5">🌟🌟🌟🌟🌟</option>
-              <option value="4">🌟🌟🌟🌟</option>
-              <option value="3">🌟🌟🌟</option>
-              <option value="2">🌟🌟</option>
-              <option value="1">🌟</option>
-            </select>
+            {% if show  %}
+            <div>
+              <form action="/ryokans/{{ id }}/reviews/new" method="post">
+                <fieldset>
+                  <legend>Create a New Review</legend>
+                  <label> Ryokan:{{ ryokanName }} </label>
+                  <label>
+                    Title:<input type="text" name="title" placeholder="enter title" />
+                  </label>
+                  <label for="">User: {{ username }}</label>
+                  <label for="rating"> Rating</label>
+                  <select name="rating">
+                    <option value="5">🌟🌟🌟🌟🌟</option>
+                    <option value="4">🌟🌟🌟🌟</option>
+                    <option value="3">🌟🌟🌟</option>
+                    <option value="2">🌟🌟</option>
+                    <option value="1">🌟</option>
+                  </select>
+            
+                  <label>
+                    Content:
+                    <textarea name="content" id="" cols="30" rows="10"></textarea>
+                  </label>
+                  <label for=""
+                    >Photo:
+                    <input type="file" name="photo" id="" />
+                  </label>
+                  <input type="hidden" name="ryokan" value="{{ id }}" />
+                  <input type="hidden" name="user" value="{{ userId }}" />
+
+                  <input type="submit" value="create new review" />
+                </fieldset>
+              </form>
+            </div>
       
-            <label>
-              Content:
-              <textarea name="content" id="" cols="30" rows="10"></textarea>
-            </label>
-            <label for=""
-              >Photo:
-              <input type="file" name="photo" id="" />
-            </label>
-            <input type="hidden" name="ryokan" value="{{ id }}" />
-            <input type="hidden" name="user" value="{{ userId }}" />
-          </fieldset>
-          <input type="submit" value="create new review" />
+            {% endif %}
       
          
-        </form>
-      </div>
-
+      
+         
+      
     </article>
   </div>
   {% endblock %}
