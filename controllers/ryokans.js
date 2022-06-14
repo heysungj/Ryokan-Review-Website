@@ -3,6 +3,7 @@
 /////////////////////////////////////////////
 const Ryokan = require("../models/ryokan");
 const Review = require("../models/review");
+const User = require("../models/user");
 const express = require("express"); // import express
 
 /////////////////////////////////////////
@@ -40,10 +41,17 @@ router.get("/", async (req, res) => {
 // show ryokan page
 router.get("/:id", async (req, res) => {
   Ryokan.findById(req.params.id)
-    .populate("reviews")
+    .populate({
+      path: "reviews",
+      populate: {
+        path: "user",
+        model: "User",
+      },
+    })
     .exec(function (err, ryokan) {
       console.log(ryokan.reviews);
       res.render("ryokans/show.liquid", {
+        login: req.session.loggedIn,
         ryokan,
         reviews: ryokan.reviews,
         username: req.session.username,

@@ -19,12 +19,15 @@ router.get("/:id/edit", (req, res) => {
   // get the fruit from the database
   Review.findById(reviewId)
     .populate("ryokan")
+    .populate("user")
     .exec(function (err, review) {
       console.log(review.ryokan);
       // render edit page and send review data
       res.render("reviews/edit.liquid", {
+        login: req.session.loggedIn,
         review,
         ryokan: review.ryokan,
+        user: review.user,
       });
     });
 });

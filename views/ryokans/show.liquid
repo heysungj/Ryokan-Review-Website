@@ -29,7 +29,7 @@
 
       {% for review in reviews %}
       <h5>Title: {{ review.title }}</h5>
-      <p>User: {{ review.user }}</p>
+      <p>User: {{ review.user.username }}</p>
       <p>Rating: {{ review.rating }}</p>
       <p>
         Content: <br />
