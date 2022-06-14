@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Ryokan Website</title>
-    <!-- Milligram CSS for Some Default Styling -->
+
     <!-- Google Fonts -->
     <link
       rel="stylesheet"
@@ -31,9 +31,14 @@
       crossorigin="anonymous"
     ></script>
 
+    <!-- google  map api -->
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCDtv_WjzEGi9xTuC_A5n-PaCPs0p-pJJU&callback=initMap&libraries=places,geometry&solution_channel=GMP_QB_locatorplus_v5_cA"
+      async
+      defer
+    ></script>
     <!-- OUR CSS AND JS -->
-    <link rel="stylesheet" href="../style.css" />
-    <script src="/app.js" defer></script>
+    <link rel="stylesheet" href="../css/style.css" />
   </head>
   <body>
     <header>
@@ -43,5 +48,7 @@
     <main>{% block content %}My default content{% endblock %}</main>
 
     <footer></footer>
+
+    <script src="../script.js"></script>
   </body>
 </html>

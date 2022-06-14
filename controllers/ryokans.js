@@ -38,6 +38,16 @@ router.get("/", async (req, res) => {
   }
 });
 
+// create new ryokan route
+router.get("/new", (req, res) => {
+  res.render("ryokans/new.liquid", {});
+});
+
+router.post("/new", (req, res) => {
+  Ryokan.create(req.body);
+  res.redirect("/ryokans");
+});
+
 // show ryokan page
 router.get("/:id", async (req, res) => {
   Ryokan.findById(req.params.id)
@@ -49,8 +59,10 @@ router.get("/:id", async (req, res) => {
       },
     })
     .exec(function (err, ryokan) {
-      const singleReview = Review.find({ user: req.session.userId });
-
+      const singleReview = Review.find({
+        ryokan: req.params.id,
+        user: req.session.userId,
+      });
       console.log(ryokan.reviews);
       res.render("ryokans/show.liquid", {
         login: req.session.loggedIn,

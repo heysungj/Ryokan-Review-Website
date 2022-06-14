@@ -8,12 +8,7 @@
   {% else %}
   <a href="/user/signup"><button>Signup</button></a>
   <a href="/user/login"><button>Login</button></a>
-  {% endif %}
-  <div>
-    <a href=""><button>Create A New Ryokan</button></a>
-  </div>
-
-  {% for ryokan in ryokans %}
+  {% endif %} {% for ryokan in ryokans %}
   <article>
     <div class="container">
       <a href="/ryokans/{{ ryokan._id }}">
