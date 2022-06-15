@@ -1,99 +1,182 @@
-{% layout "layout.liquid" %} {% block content %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Ryokan Website</title>
 
-<div>
-    <a href="/ryokans"><button>Home</button></a>
-    </div>
-  {% if login %}
-  <div>
-    <a href="/user/logout"><button>Logout</button></a>
-</div>
-<div>
-    <a href="/user/myaccount"><button>My Account</button></a>
-  </div>
-  {% else %}
-  <div>
-  <a href="/user/signup"><button>Signup</button></a>
-</div>
-<div>
-  <a href="/user/login"><button>Login</button></a>
-</div>
-  {% endif %}
-  <div>
-    <h5>Hello {{ username }}</h5>
-  </div>
-  <div>
-    <article>
-      <h2>
-        {{ ryokan.name }}
-      </h2>
-      <h3>Address: {{ ryokan.address }}</h3>
-      <h3>Tel: {{ ryokan.tel }}</h3>
+    <!-- Google Fonts -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic"
+    />
 
-    <div id="map"></div>      
-      {% for review in reviews %}
-      <h5>Title: {{ review.title }}</h5>
-      <p>User: {{ review.user.username }}</p>
-      <p>Rating: {{ review.rating }}</p>
-      <p>
-        Content: <br />
-        {{ review.content }}
-      </p>
-      <h5>photo</h5>
-      {% for photo in review.photo %}
-      <img src="{{ photo }}" alt="" />
-      {% endfor %}
+    <!-- CSS Reset -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css"
+    />
 
-      <!-- check if current user  -->
-      {% if username == review.user.username %}
-      <a href="/reviews/{{ review._id }}/edit"><button>Edit</button></a>
-      <form action="/reviews/{{ review._id }}?_method=DELETE" method="POST">
-        <input type="submit" value="Delete" />
-      </form>
+    <!-- Milligram CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css"
+    />
+
+    <!-- Jquery -->
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+      // Initialize and add the map
+      const address = "{{ ryokan.address }}";
+      function initMap() {
+        geocoder = new google.maps.Geocoder();
+        geocoder.geocode({ address: address }, function (results, status) {
+          if (status == "OK") {
+            // The location of Uluru
+            // The map, centered at Uluru
+            map = new google.maps.Map(document.getElementById("map"), {
+              zoom: 10,
+              center: results[0].geometry.location,
+            });
+            // The marker, positioned at Uluru
+            const marker = new google.maps.Marker({
+              position: results[0].geometry.location,
+              map: map,
+            });
+          } else {
+            alert(
+              "Geocode was not successful for the following reason: " + status
+            );
+          }
+        });
+      }
+
+      window.initMap = initMap;
+    </script>
+    <!-- OUR CSS AND JS -->
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>The Ryokan Website</h1>
+    </header>
+
+    <main>
+      <div>
+        <a href="/ryokans">
+          <button>Home</button>
+        </a>
+      </div>
+      {% if login %}
+      <div>
+        <a href="/user/logout">
+          <button>Logout</button>
+        </a>
+      </div>
+      <div>
+        <a href="/user/myaccount">
+          <button>My Account</button>
+        </a>
+      </div>
+      {% else %}
+      <div>
+        <a href="/user/signup">
+          <button>Signup</button>
+        </a>
+      </div>
+      <div>
+        <a href="/user/login">
+          <button>Login</button>
+        </a>
+      </div>
       {% endif %}
-      {% endfor %}
+      <div>
+        <h5>Hello {{ username }}</h5>
+      </div>
+      <div>
+        <article>
+          <h2>
+            {{ ryokan.name }}
+          </h2>
+          <h3>Address: {{ ryokan.address }}</h3>
+          <h3>Tel: {{ ryokan.tel }}</h3>
 
-            {% if show  %}
-            <div>
-              <form action="/ryokans/{{ id }}/reviews/new" method="post">
-                <fieldset>
-                  <legend>Create a New Review</legend>
-                  <label> Ryokan:{{ ryokanName }} </label>
-                  <label>
-                    Title:<input type="text" name="title" placeholder="enter title" />
-                  </label>
-                  <label for="">User: {{ username }}</label>
-                  <label for="rating"> Rating</label>
-                  <select name="rating">
-                    <option value="5">🌟🌟🌟🌟🌟</option>
-                    <option value="4">🌟🌟🌟🌟</option>
-                    <option value="3">🌟🌟🌟</option>
-                    <option value="2">🌟🌟</option>
-                    <option value="1">🌟</option>
-                  </select>
-            
-                  <label>
-                    Content:
-                    <textarea name="content" id="" cols="30" rows="10"></textarea>
-                  </label>
-                  <label for=""
-                    >Photo:
-                    <input type="file" name="photo" id="" />
-                  </label>
-                  <input type="hidden" name="ryokan" value="{{ id }}" />
-                  <input type="hidden" name="user" value="{{ userId }}" />
+          <div id="map" style="height: 400px; width: 400px"></div>
+          {% for review in reviews %}
+          <h5>Title: {{ review.title }}</h5>
+          <p>User: {{ review.user.username }}</p>
+          <p>Rating: {{ review.rating }}</p>
+          <p>
+            Content: <br />
+            {{ review.content }}
+          </p>
+          <h5>photo</h5>
+          {% for photo in review.photo %}
+          <img src="{{ photo }}" alt="" />
+          {% endfor %}
 
-                  <input type="submit" value="create new review" />
-                </fieldset>
-              </form>
-            </div>
-      
-            {% endif %}
-      
-         
-      
-         
-      
-    </article>
-  </div>
-  {% endblock %}
-</div>
+          <!-- check if current user  -->
+          {% if username == review.user.username %}
+          <a href="/reviews/{{ review._id }}/edit">
+            <button>Edit</button>
+          </a>
+          <form action="/reviews/{{ review._id }}?_method=DELETE" method="POST">
+            <input type="submit" value="Delete" />
+          </form>
+          {% endif %} {% endfor %} {% if show %}
+          <div>
+            <form action="/ryokans/{{ id }}/reviews/new" method="post">
+              <fieldset>
+                <legend>Create a New Review</legend>
+                <label> Ryokan:{{ ryokanName }} </label>
+                <label>
+                  Title:<input
+                    type="text"
+                    name="title"
+                    placeholder="enter title"
+                  />
+                </label>
+                <label for="">User: {{ username }}</label>
+                <label for="rating"> Rating</label>
+                <select name="rating">
+                  <option value="5">🌟🌟🌟🌟🌟</option>
+                  <option value="4">🌟🌟🌟🌟</option>
+                  <option value="3">🌟🌟🌟</option>
+                  <option value="2">🌟🌟</option>
+                  <option value="1">🌟</option>
+                </select>
+
+                <label>
+                  Content:
+                  <textarea name="content" id="" cols="30" rows="10"></textarea>
+                </label>
+                <label for=""
+                  >Photo:
+                  <input type="file" name="photo" id="" />
+                </label>
+                <input type="hidden" name="ryokan" value="{{ id }}" />
+                <input type="hidden" name="user" value="{{ userId }}" />
+
+                <input type="submit" value="create new review" />
+              </fieldset>
+            </form>
+          </div>
+
+          {% endif %}
+        </article>
+      </div>
+    </main>
+    <footer></footer>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCDtv_WjzEGi9xTuC_A5n-PaCPs0p-pJJU&callback=initMap&libraries=places,geometry&solution_channel=GMP_QB_locatorplus_v5_cA"
+      async
+      defer
+    ></script>
+  </body>
+</html>
