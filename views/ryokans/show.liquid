@@ -135,18 +135,22 @@
 
         <div id="map" style="height: 400px; width: 400px"></div>
         {% for review in reviews %}
-        <h5>Title: {{ review.title }}</h5>
-        <p>User: {{ review.user.username }}</p>
-        <p>Rating: {{ review.rating }}</p>
-        <p>
+        <div class="contentContainer">
+        <h4>Title: {{ review.title }}</h4>
+        <h4>User: {{ review.user.username }}</h4>
+        <h6>Rating: {{ review.rating }}</h6>
+        <h6>
           Content: <br />
           {{ review.content }}
-        </p>
+        </h6>
         <h5>photo</h5>
         <div class="reviewPhoto">
           {% for photo in review.photo %}
+          <div>
           <img src="{{ photo }}" alt="" />
+        </div>
           {% endfor %}
+        </div>
         </div>
 
         <!-- check if current user  -->
@@ -161,8 +165,8 @@
         <div>
           <form action="/ryokans/{{ id }}/reviews/new" method="post">
             <fieldset>
-              <legend>Create a New Review</legend>
-              <label> Ryokan:{{ ryokanName }} </label>
+              <h4>Create a New Review</h4>
+              <label> Ryokan:{{ ryokan.name }} </label>
               <label>
                 Title:<input
                   type="text"

@@ -14,10 +14,7 @@ html {
   
 }
 
-input {
-    border: 5px solid white;
-}
-  h1,h2, h3, h4, h5{
+  h1,h2, h3, h4, h5, h6{
       color: white;
       font-weight: bolder;
   }
@@ -55,6 +52,7 @@ input {
 .contentContainer {
     background-color: rgb(117, 109, 107);
     color: white;
+    border-radius: 3%;
 }
 
 
@@ -77,7 +75,17 @@ img {
     height: 350px;
     border-radius: 5%;
 }
+/* for show page */
+.reviewPhoto {
+    display: flex;
+    flex-direction: row;
+    justify-content:space-evenly;
+    flex-wrap: wrap;
+}
 
+#map {
+    border-radius: 3%;
+}
 
 
 #ryokanPhotoContainer {

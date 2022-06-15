@@ -78,7 +78,10 @@ router.get("/", async (req, res) => {
 
 // create new ryokan route
 router.get("/new", (req, res) => {
-  res.render("ryokans/new.liquid", {});
+  res.render("ryokans/new.liquid", {
+    login: req.session.loggedIn,
+    username: req.session.username,
+  });
 });
 
 router.post("/new", (req, res) => {

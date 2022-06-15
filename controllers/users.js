@@ -19,6 +19,7 @@ const router = express.Router();
 router.get("/signup", (req, res) => {
   res.render("user/signup.liquid", {
     login: req.session.loggedIn,
+    username: req.session.username,
   });
 });
 
@@ -45,6 +46,7 @@ router.post("/signup", async (req, res) => {
 router.get("/login", (req, res) => {
   res.render("user/login.liquid", {
     login: req.session.loggedIn,
+    username: req.session.username,
   });
 });
 
