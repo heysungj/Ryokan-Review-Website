@@ -35,12 +35,61 @@
     <link rel="stylesheet" href="../css/style.css" />
   </head>
   <body>
-    <header>
-      <h1>The Ryokan Website</h1>
-    </header>
+    <div class="navBar">
+      <div>
+        <header>
+          <a href="/ryokans"><h2>The Ryokan Website</h2></a>
+        </header>
+      </div>
 
-    <main>{% block content %}My default content{% endblock %}</main>
+      <div>
+        <form action="/ryokans" method="GET" id="searchContainer">
+          <div>
+            <input
+              type="text"
+              name="name"
+              id=""
+              placeholder="Search Ryokan"
+              class="searchBar"
+            />
+          </div>
+          <div>
+            <button class="button">search</button>
+          </div>
+        </form>
+      </div>
+      {% if login %}
+      <div class="buttonContainer">
+        <div>
+          <a href="/user/logout"><button class="button">Logout</button></a>
+        </div>
+        <div>
+          <a href="/user/myaccount"
+            ><button class="button">My Account</button></a
+          >
+        </div>
+      </div>
+      {% else %}
+      <div class="buttonContainer">
+        <div>
+          <a href="/user/signup"><button class="button">Signup</button></a>
+        </div>
+        <div>
+          <a href="/user/login"><button class="button">Login</button></a>
+        </div>
+      </div>
+      {% endif %}
+      <div>
+        <h5>Hello {{ username }}</h5>
+      </div>
+    </div>
 
-    <footer></footer>
+    <div id="mainContainer">
+      <main>{% block content %}My default content{% endblock %}</main>
+
+      <div>
+        <footer>Copyright @Jing 2022</footer>
+      </div>
+    </div>
   </body>
 </html>

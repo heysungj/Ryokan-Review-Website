@@ -17,7 +17,9 @@ const router = express.Router();
 
 // The Signup Routes (Get => form, post => submit form)
 router.get("/signup", (req, res) => {
-  res.render("user/signup.liquid");
+  res.render("user/signup.liquid", {
+    login: req.session.loggedIn,
+  });
 });
 
 router.post("/signup", async (req, res) => {
@@ -41,7 +43,9 @@ router.post("/signup", async (req, res) => {
 
 // The login Routes (Get => form, post => submit form)
 router.get("/login", (req, res) => {
-  res.render("user/login.liquid");
+  res.render("user/login.liquid", {
+    login: req.session.loggedIn,
+  });
 });
 
 router.post("/login", async (req, res) => {
@@ -88,11 +92,13 @@ router.get("/logout", (req, res) => {
 router.get("/myaccount", (req, res) => {
   let id = req.session.userId;
   Review.find({ user: id })
+    .populate("ryokan")
     .then((reviews) => {
       // render my account page
       res.render("user/myaccount.liquid", {
         reviews,
         username: req.session.username,
+        login: req.session.loggedIn,
       });
     })
     // send error as json

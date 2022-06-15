@@ -1,26 +1,24 @@
 {% layout "layout.liquid" %} {% block content %}
-<div>
-  <a href="/ryokans"><button>Home</button></a>
-</div>
-<div>
-  <a href="/user/signup"><button>Signup</button></a>
-  <a href="/user/login"><button>Login</button></a>
 
-  <div>
-    <a href="/ryokans/new"><button>Create A New Ryokan</button></a>
-  </div>
+<div>
+  <a href="/ryokans/new"><button>Create A New Ryokan</button></a>
+</div>
+
+<div>
   <h4>User: {{ username }}</h4>
   {% for review in reviews %}
   <article>
-    <div class="container">
-      <a href="/ryokans/{{ review.ryokan }}">
-        <h5>Title: {{ review.title }}</h5>
-      </a>
+    <div class="contentContainer">
+      <a href="/ryokans/{{ review.ryokan }}"
+        ><h3>{{ review.ryokan.name }}</h3></a
+      >
+      <h5>Title: {{ review.title }}</h5>
       <p>Rating: {{ review.rating }}</p>
       <p>Content: {{ review.content }}</p>
-      <label for="">Photo: <img src="{{ review.photo }}" alt="" /></label>
+      <label for="">Photo: <img src="{{ review.photo[0] }}" alt="" /></label>
     </div>
   </article>
   {% endfor %}
 </div>
+
 {% endblock %}

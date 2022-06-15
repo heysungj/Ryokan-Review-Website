@@ -1,41 +1,40 @@
 {% layout "layout.liquid" %} {% block content %}
-<div>
-  <a href="/ryokans"><button>Home</button></a>
-</div>
-<div>
-  <form action="/reviews/{{ review._id }}?_method=PUT" method="post">
-    <fieldset>
-      <label> {{ ryokan.name }} </label>
-      <label>
-        Title:<input
-          type="text"
-          name="title"
-          value="{{ review.title }}"
-          placeholder="enter title"
-        />
-      </label>
-      <label for="">User: {{ user.username }}</label>
-      <label for="rating"> Rating</label>
-      <select name="rating" value="{{ review.rating }}">
-        <option value="5">🌟🌟🌟🌟🌟</option>
-        <option value="4">🌟🌟🌟🌟</option>
-        <option value="3">🌟🌟🌟</option>
-        <option value="2">🌟🌟</option>
-        <option value="1">🌟</option>
-      </select>
 
-      <label>
-        Content:
-        <textarea name="content" id="" cols="30" rows="10">{{
-          review.content
-        }}</textarea>
-      </label>
-      <label for=""
-        >Photo:
-        <input type="file" name="photo" id="" value="{{ review.photo }}" />
-      </label>
-    </fieldset>
-    <input type="submit" value="Confirm Edit" />
-  </form>
+  <div>
+    <form action="/reviews/{{ review._id }}?_method=PUT" method="post">
+      <fieldset>
+        <label> {{ ryokan.name }} </label>
+        <label>
+          Title:<input
+            type="text"
+            name="title"
+            value="{{ review.title }}"
+            placeholder="enter title"
+          />
+        </label>
+        <label for="">User: {{ user.username }}</label>
+        <label for="rating"> Rating</label>
+        <select name="rating" value="{{ review.rating }}">
+          <option value="5">🌟🌟🌟🌟🌟</option>
+          <option value="4">🌟🌟🌟🌟</option>
+          <option value="3">🌟🌟🌟</option>
+          <option value="2">🌟🌟</option>
+          <option value="1">🌟</option>
+        </select>
+
+        <label>
+          Content:
+          <textarea name="content" id="" cols="30" rows="10">{{
+            review.content
+          }}</textarea>
+        </label>
+        <label for=""
+          >Photo:
+          <input type="file" name="photo" id="" value="{{ review.photo }}" />
+        </label>
+      </fieldset>
+      <input type="submit" value="Confirm Edit" />
+    </form>
+  </div>
+  {% endblock %}
 </div>
-{% endblock %}
