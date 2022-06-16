@@ -1,40 +1,137 @@
-{% layout "layout.liquid" %} {% block content %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Ryokan Website</title>
 
-<div>
-  <form action="/reviews/{{ review._id }}?_method=PUT" method="post">
-    <fieldset>
-      <label> {{ ryokan.name }} </label>
-      <label>
-        Title:<input
-          type="text"
-          name="title"
-          value="{{ review.title }}"
-          placeholder="enter title"
-        />
-      </label>
-      <label for="">User: {{ user.username }}</label>
-      <label for="rating"> Rating</label>
-      <select name="rating" value="{{ review.rating }}">
-        <option value="5">🌟🌟🌟🌟🌟</option>
-        <option value="4">🌟🌟🌟🌟</option>
-        <option value="3">🌟🌟🌟</option>
-        <option value="2">🌟🌟</option>
-        <option value="1">🌟</option>
-      </select>
+    <!-- Google Fonts -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic"
+    />
 
-      <label>
-        Content:
-        <textarea name="content" id="" cols="30" rows="10">{{
-          review.content
-        }}</textarea>
-      </label>
-      <label for=""
-        >Photo:
-        <input type="file" name="photo" id="" value="{{ review.photo }}" />
-      </label>
-    </fieldset>
-    <input type="submit" value="Confirm Edit" />
-  </form>
-</div>
+    <!-- CSS Reset -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css"
+    />
 
-{% endblock %}
+    <!-- Milligram CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css"
+    />
+
+    <!-- Jquery -->
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- OUR CSS AND JS -->
+    <link rel="stylesheet" href="../../css/style.css" />
+  </head>
+  <body>
+    <div class="navBar">
+      <div>
+        <header>
+          <a href="/ryokans"><h2>The Ryokan Website</h2></a>
+        </header>
+      </div>
+
+      <div>
+        <form action="/ryokans" method="GET" id="searchContainer">
+          <div>
+            <input
+              type="text"
+              name="name"
+              id=""
+              placeholder="Search Ryokan"
+              class="searchBar"
+            />
+          </div>
+          <div>
+            <button class="button">search</button>
+          </div>
+        </form>
+      </div>
+      {% if login %}
+      <div class="buttonContainer">
+        <div>
+          <a href="/user/logout"><button class="button">Logout</button></a>
+        </div>
+        <div>
+          <a href="/user/myaccount"
+            ><button class="button">My Account</button></a
+          >
+        </div>
+      </div>
+      {% else %}
+      <div class="buttonContainer">
+        <div>
+          <a href="/user/signup"><button class="button">Signup</button></a>
+        </div>
+        <div>
+          <a href="/user/login"><button class="button">Login</button></a>
+        </div>
+      </div>
+      {% endif %}
+      <div>
+        <h5>Hello {{ username }}</h5>
+      </div>
+    </div>
+
+    <div id="mainContainer">
+      <main>
+        <div>
+          <form action="/reviews/{{ review._id }}?_method=PUT" method="post">
+            <fieldset>
+              <label> {{ ryokan.name }} </label>
+              <label>
+                Title:<input
+                  type="text"
+                  name="title"
+                  value="{{ review.title }}"
+                  placeholder="enter title"
+                />
+              </label>
+              <label for="">User: {{ user.username }}</label>
+              <label for="rating"> Rating</label>
+              <select name="rating" value="{{ review.rating }}">
+                <option value="5">🌟🌟🌟🌟🌟</option>
+                <option value="4">🌟🌟🌟🌟</option>
+                <option value="3">🌟🌟🌟</option>
+                <option value="2">🌟🌟</option>
+                <option value="1">🌟</option>
+              </select>
+
+              <label>
+                Content:
+                <textarea name="content" id="" cols="30" rows="10">{{
+                  review.content
+                }}</textarea>
+              </label>
+              <label for=""
+                >Photo:
+                <input
+                  type="file"
+                  name="photo"
+                  id=""
+                  value="{{ review.photo }}"
+                />
+              </label>
+            </fieldset>
+            <input type="submit" value="Confirm Edit" />
+          </form>
+        </div>
+      </main>
+
+      <div>
+        <footer>Copyright @Jing 2022</footer>
+      </div>
+    </div>
+  </body>
+</html>
