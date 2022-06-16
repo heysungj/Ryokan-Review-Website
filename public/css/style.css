@@ -35,7 +35,7 @@ html {
  }
 
  div {
-     margin: 10px;
+     margin: 5px;
      
  }
  .buttonContainer {
@@ -55,6 +55,7 @@ html {
     border-radius: 3%;
     margin: 50px;
     padding: 25px;
+    /* align-items: center; */
 }
 
 #search {
@@ -69,7 +70,7 @@ article{
     flex-wrap: wrap;
 }
 
-.ryokanContainer {
+.container {
     width: 45%;
     height: 450px;
 }
@@ -78,6 +79,10 @@ img {
     width: 550px;
     height: 350px;
     border-radius: 5%;
+}
+
+.input {
+    color: white;
 }
 /* for show page */
 .reviewPhoto {

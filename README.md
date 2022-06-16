@@ -32,7 +32,7 @@ As a user I want to
 
 ![alt text](https://github.com/heysungj/Ryokan-Review-Website/blob/main/public/photos/new.jpg)
 
-![alt text](https://github.com/heysungj/Ryokan-Review-Website/blob/main/public/photos/addReview.jpg)
+![alt text](https://github.com/heysungj/Ryokan-Review-Website/blob/main/public/photos/review.jpg)
 ![alt text](https://github.com/heysungj/Ryokan-Review-Website/blob/main/public/photos/account.jpg)
 
 **The ERD:**  

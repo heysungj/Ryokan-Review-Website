@@ -1,20 +1,26 @@
 {% layout "layout.liquid" %} {% block content %}
-<div>
+<div class="contentContainer">
   <form action="/ryokans/new" method="post">
     <fieldset>
       <legend>Create a New Ryokan</legend>
       <label>
-        NAME:<input type="text" name="name" placeholder="enter ryokan name" />
+        NAME:<input
+          type="text"
+          name="name"
+          placeholder="enter ryokan name"
+          class="input"
+        />
       </label>
       <label>
         Address:<input
           type="text"
           name="address"
           placeholder="enter ryokan address"
+          class="input"
         />
       </label>
-      <label> Tel:<input type="text" name="tel" /> </label>
-      <label> Photo: <input type="file" name="img" id="" /></label>
+      <label> Tel:<input type="text" name="tel" class="input" /> </label>
+      <label> Photo: <input type="url" name="img" id="" class="input" /></label>
     </fieldset>
     <input type="submit" value="Create New Ryokan" />
   </form>

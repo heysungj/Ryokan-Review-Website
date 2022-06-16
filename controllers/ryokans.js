@@ -84,8 +84,8 @@ router.get("/new", (req, res) => {
   });
 });
 
-router.post("/new", (req, res) => {
-  Ryokan.create(req.body);
+router.post("/new", async (req, res) => {
+  await Ryokan.create(req.body);
   res.redirect("/ryokans");
 });
 

@@ -18,6 +18,10 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css"
     />
 
+     <!-- head icon -->
+     <link rel="bookmark" href="../../photos/hot-spring.png" />
+     <link rel="shortcut icon" href="../../photos/hot-spring.png" />
+
     <!-- Milligram CSS -->
     <link
       rel="stylesheet"
@@ -76,7 +80,7 @@
             <input
               type="text"
               name="name"
-              id=""
+              id="search"
               placeholder="Search Ryokan"
               class="searchBar"
             />
@@ -194,7 +198,7 @@
               </label>
               <label for=""
                 >Photo:
-                <input type="file" name="photo" id="" />
+                <input type="url" name="photo" id="" />
               </label>
               <input type="hidden" name="ryokan" value="{{ id }}" />
               <input type="hidden" name="user" value="{{ userId }}" />
