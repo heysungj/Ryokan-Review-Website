@@ -1,5 +1,5 @@
 {% layout "layout.liquid" %} {% block content %}
-<div>
+<div class="contentContainer">
   <form action="/user/signup" method="post">
     <fieldset>
       <h3>New User</h3>
@@ -14,8 +14,12 @@
           required
         />
       </label>
-      <a href="/user/login">Already have an account >></a>
-      <input type="submit" value="Create Account" />
+      <div>
+        <input type="submit" value="Create Account" />
+      </div>
+      <div>
+        <a href="/user/login">Already have an account >></a>
+      </div>
     </fieldset>
   </form>
 </div>

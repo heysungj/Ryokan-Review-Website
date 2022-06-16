@@ -55,14 +55,20 @@ html {
     border-radius: 3%;
     margin: 50px;
     padding: 25px;
-    /* align-items: center; */
 }
 
 #search {
     color:white;
 }
 
-
+::placeholder {
+    color: white;
+    opacity: 1; /* Firefox */
+  }
+  
+fieldset {
+    align-items: center;
+}
 article{
     display: flex;
     flex-direction: row;
