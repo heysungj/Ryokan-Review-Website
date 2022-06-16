@@ -109,7 +109,7 @@ const ryokans = [
     name: "Gekkuju",
     address:
       "6777-2 Manganji, Minamioguni, Aso District, Kumamoto 869-2402, Japan",
-    img: ["/onsen_photos/gekkoju1.jpeg", "/onsen_photos/gekkoju7.jpeg"],
+    img: ["/onsen_photos/gekkoju1.jpg", "/onsen_photos/gekkoju7.jpg"],
     tel: "+81 967-44-1717",
     reviews: [reviewId4],
   },
