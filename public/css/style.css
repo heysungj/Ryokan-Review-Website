@@ -84,6 +84,10 @@ img {
 .input {
     color: white;
 }
+
+#input {
+    color: white;
+}
 /* for show page */
 .reviewPhoto {
     display: flex;

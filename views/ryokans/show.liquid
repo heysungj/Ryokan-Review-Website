@@ -187,6 +187,7 @@
                   type="text"
                   name="title"
                   placeholder=""
+                  class="input"
                 />
               </label>
               <label for="">User: {{ username }}</label>
@@ -201,11 +202,11 @@
 
               <label>
                 Content:
-                <textarea name="content" id="" cols="30" rows="10"></textarea>
+                <textarea name="content" id="" cols="30" rows="10" class="input"></textarea>
               </label>
               <label for=""
                 >Photo:
-                <input type="url" name="photo" id="" />
+                <input type="url" name="photo" id="" class="input"/>
               </label>
               <input type="hidden" name="ryokan" value="{{ id }}" />
               <input type="hidden" name="user" value="{{ userId }}" />
