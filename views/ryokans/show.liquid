@@ -125,6 +125,7 @@
           <h3>Tel: {{ ryokan.tel }}</h3>
         </div>
 
+          <div class="reviewPhoto">
         <div id="ryokanPhotoContainer">
           <div id="ryokanPhoto">
             {% for img in ryokan.img %}
@@ -132,8 +133,9 @@
             {% endfor %}
           </div>
         </div>
-
         <div id="map" style="height: 400px; width: 400px"></div>
+      </div>
+
         {% for review in reviews %}
         <div class="contentContainer">
         <h4>Title: {{ review.title }}</h4>

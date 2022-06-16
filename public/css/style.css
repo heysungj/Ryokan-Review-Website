@@ -53,6 +53,8 @@ html {
     background-color: rgb(117, 109, 107);
     color: white;
     border-radius: 3%;
+    margin: 20px;
+    padding: 15px;
 }
 
 
@@ -79,7 +81,7 @@ img {
 .reviewPhoto {
     display: flex;
     flex-direction: row;
-    justify-content:space-evenly;
+    justify-content:space-around;
     flex-wrap: wrap;
 }
 
