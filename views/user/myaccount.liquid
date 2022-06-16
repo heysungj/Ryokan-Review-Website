@@ -9,7 +9,7 @@
   {% for review in reviews %}
   <article>
     <div class="contentContainer">
-      <a href="/ryokans/{{ review.ryokan }}"
+      <a href="/ryokans/{{ review.ryokan._id }}"
         ><h3>{{ review.ryokan.name }}</h3></a
       >
       <h5>Title: {{ review.title }}</h5>

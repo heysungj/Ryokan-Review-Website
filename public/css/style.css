@@ -23,6 +23,7 @@ html {
     display: flex;
     flex-direction: row;
     justify-content:space-between;
+    align-items: center;
     background-color: rgb(59, 56, 55);
     border: none;
     margin: 0;
@@ -35,8 +36,7 @@ html {
 
  div {
      margin: 10px;
-     margin-top: 15px;
-     margin-bottom: 5px;
+     
  }
  .buttonContainer {
     display: flex;
@@ -50,14 +50,16 @@ html {
     border: none;
 }
 .contentContainer {
-    background-color: rgb(117, 109, 107);
+    background-color: rgb(132, 128, 127);
     color: white;
     border-radius: 3%;
-    margin: 20px;
-    padding: 15px;
+    margin: 50px;
+    padding: 25px;
 }
 
-
+#search {
+    color:white;
+}
 
 
 article{
@@ -67,8 +69,8 @@ article{
     flex-wrap: wrap;
 }
 
-.container {
-    width: 50%;
+.ryokanContainer {
+    width: 45%;
     height: 450px;
 }
 
@@ -82,6 +84,7 @@ img {
     display: flex;
     flex-direction: row;
     justify-content:space-around;
+    align-items: center;
     flex-wrap: wrap;
 }
 

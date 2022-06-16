@@ -48,7 +48,7 @@
             <input
               type="text"
               name="name"
-              id=""
+              id="search"
               placeholder="Search Ryokan"
               class="searchBar"
             />
@@ -86,7 +86,7 @@
 
     <div id="mainContainer">
       <main>
-        <div>
+        <div class="contentContainer">
           <form action="/reviews/{{ review._id }}?_method=PUT" method="post">
             <fieldset>
               <label> {{ ryokan.name }} </label>
@@ -96,6 +96,7 @@
                   name="title"
                   value="{{ review.title }}"
                   placeholder="enter title"
+                  style="color: white"
                 />
               </label>
               <label for="">User: {{ user.username }}</label>
@@ -110,9 +111,14 @@
 
               <label>
                 Content:
-                <textarea name="content" id="" cols="30" rows="10">{{
-                  review.content
-                }}</textarea>
+                <textarea
+                  name="content"
+                  id=""
+                  cols="30"
+                  rows="10"
+                  style="color: white"
+                  >{{ review.content }}</textarea
+                >
               </label>
               <label for=""
                 >Photo:

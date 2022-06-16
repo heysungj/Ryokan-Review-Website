@@ -164,7 +164,9 @@
           <input type="submit" value="Delete" />
         </form>
         {% endif %} {% endfor %} {% if show %}
-        <div>
+
+
+        <div class="contentContainer">
           <form action="/ryokans/{{ id }}/reviews/new" method="post">
             <fieldset>
               <h4>Create a New Review</h4>
@@ -173,7 +175,7 @@
                 Title:<input
                   type="text"
                   name="title"
-                  placeholder="enter title"
+                  placeholder=""
                 />
               </label>
               <label for="">User: {{ username }}</label>
