@@ -22,17 +22,27 @@ As a user I want to
 
 • Be able to see ryokan's location
 
-• Be able to do ryokan search by input city name
+• Be able to do ryokan search by ryokan name
 
 **The Wireframes:**
+• Main Page
 
 ![alt text](https://github.com/heysungj/Ryokan-Review-Website/blob/main/public/photos/main.jpg)
 
+• Show Page
+
 ![alt text](https://github.com/heysungj/Ryokan-Review-Website/blob/main/public/photos/show.jpg)
+
+• Reviews Under Ryokan Page
+
+![alt text](https://github.com/heysungj/Ryokan-Review-Website/blob/main/public/photos/review.jpg)
+
+• Add New Ryokan Page
 
 ![alt text](https://github.com/heysungj/Ryokan-Review-Website/blob/main/public/photos/new.jpg)
 
-![alt text](https://github.com/heysungj/Ryokan-Review-Website/blob/main/public/photos/review.jpg)
+• My Account Page
+
 ![alt text](https://github.com/heysungj/Ryokan-Review-Website/blob/main/public/photos/account.jpg)
 
 **The ERD:**  
@@ -51,15 +61,15 @@ Every user can add many reviews
 
 •Create POST /ryokans
 
-•Edit GET /ryokans/edit/:id
+•Create Review GET /ryokans/:id
 
-•Update PUT /ryokans/:id
+•Get Edit Review GET /reviews/:ReviewId/edit
 
-•CreateReview GET /ryokans/addReview/:id
+•Update edited Review PUT /reviews/:ReviewId
 
-•Create POST /ryokans/addReview/:id
+•Create review POST /ryokans/:id/reviews/new
 
-•Destroy DELETE /Ryokans/review/:id
+•Destroy DELETE review /reviews/:ReviewId
 
 •SignUp GET /ryokans/signup
 
@@ -69,13 +79,7 @@ Every user can add many reviews
 
 •CreateLogin POST /ryokans/login
 
-•Account GET /ryokans/account/:userId
+•Account GET /user/myaccount
 
 **Technologies Used:**
-JavaScript, Liquid, Express, Mongoose, MongdoDB, Node
-
-**How To Use:**
-
-**MVP Requirements:**
-
-**Stretch goals / ICE BOX:**
+JavaScript, Liquid, Express, Mongoose, MongdoDB Atlas, Node, Heroku
