@@ -137,6 +137,8 @@
             {% endfor %}
           </div>
         </div>
+
+        <!-- google map API -->
         <div id="map" style="height: 400px; width: 400px"></div>
       </div>
 
@@ -178,7 +180,7 @@
 
 
         <div class="contentContainer">
-          <form action="/ryokans/{{ id }}/reviews/new" method="post">
+          <form action="/ryokans/{{ id }}/reviews/new" method="post" enctype="multipart/form-data">
             <fieldset>
               <h4>Create a New Review</h4>
               <label> Ryokan:{{ ryokan.name }} </label>
@@ -206,7 +208,7 @@
               </label>
               <label for=""
                 >Photo:
-                <input type="url" name="photo" id="" class="input"/>
+                <input type="file" name="photos" class="input" multiple/>
               </label>
               <input type="hidden" name="ryokan" value="{{ id }}" />
               <input type="hidden" name="user" value="{{ userId }}" />
