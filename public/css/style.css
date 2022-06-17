@@ -11,6 +11,7 @@ html {
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
   
 }
 
@@ -34,9 +35,8 @@ html {
     margin: 0 5px;
  }
 
- div {
-     margin: 10px;
-     
+ .buttonDiv {
+    margin: 10px;
  }
  .buttonContainer {
     display: flex;
@@ -78,6 +78,8 @@ article{
 }
 
 .container {
+    display: flex;
+    justify-content: center;
     width: 45%;
     height: 450px;
 }
@@ -139,5 +141,6 @@ footer {
     position: absolute;
     bottom: 0;
     width: 100%;
-    height: 2.5rem;  
+    height: 2.5rem; 
+    text-align: center;
     }

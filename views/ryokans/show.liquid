@@ -66,9 +66,12 @@
     <!-- OUR CSS AND JS -->
     <link rel="stylesheet" href="../css/style.css" />
   </head>
+
+
   <body>
+    <!-- nav bar -->
     <div class="navBar">
-      <div>
+      <div class="buttonDiv">
         <header>
           <a href="/ryokans"><h2>The Ryokan Website</h2></a>
         </header>
@@ -76,7 +79,7 @@
 
       <div>
         <form action="/ryokans" method="GET" id="searchContainer">
-          <div>
+          <div class="buttonDiv">
             <input
               type="text"
               name="name"
@@ -85,17 +88,17 @@
               class="searchBar"
             />
           </div>
-          <div>
+          <div class="buttonDiv">
             <button class="button">search</button>
           </div>
         </form>
       </div>
       {% if login %}
       <div class="buttonContainer">
-        <div>
+        <div class="buttonDiv">
           <a href="/user/logout"><button class="button">Logout</button></a>
         </div>
-        <div>
+        <div class="buttonDiv">
           <a href="/user/myaccount"
             ><button class="button">My Account</button></a
           >
@@ -103,29 +106,31 @@
       </div>
       {% else %}
       <div class="buttonContainer">
-        <div>
+        <div class="buttonDiv">
           <a href="/user/signup"><button class="button">Signup</button></a>
         </div>
-        <div>
+        <div class="buttonDiv">
           <a href="/user/login"><button class="button">Login</button></a>
         </div>
       </div>
       {% endif %}
-      <div>
+      <div class="buttonDiv">
         <h5>Hello {{ username }}</h5>
       </div>
     </div>
+          
 
+    <!-- content -->
       <div class="showContent">
-        <div>
+        <div class="buttonDiv">
           <h2>
             {{ ryokan.name }}
           </h2>
         </div>
-        <div>
+        <div class="buttonDiv">
           <h3>Address: {{ ryokan.address }}</h3>
         </div>
-        <div>
+        <div class="buttonDiv">
           <h3>Tel: {{ ryokan.tel }}</h3>
         </div>
 
@@ -161,16 +166,16 @@
         </div>
         </div>
 
-        <!-- check if current user  -->
+        <!-- check if is current user  -->
         
         {% if username == review.user.username %}
         <div class="buttonContainer">
-          <div>
+          <div class="buttonDiv">
         <a href="/reviews/{{ review._id }}/edit">
           <button>Edit</button>
         </a>
       </div>
-      <div>
+      <div class="buttonDiv">
         <form action="/reviews/{{ review._id }}?_method=DELETE" method="POST">
           <input type="submit" value="Delete" />
         </form>
@@ -179,6 +184,7 @@
         {% endif %} {% endfor %} {% if show %}
 
 
+        <!-- create new review -->
         <div class="contentContainer">
           <form action="/ryokans/{{ id }}/reviews/new" method="post" enctype="multipart/form-data">
             <fieldset>

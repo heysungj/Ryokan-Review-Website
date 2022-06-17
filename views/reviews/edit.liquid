@@ -37,8 +37,9 @@
     <link rel="stylesheet" href="../../css/style.css" />
   </head>
   <body>
+    <!-- nav bar -->
     <div class="navBar">
-      <div>
+      <div class="buttonDiv">
         <header>
           <a href="/ryokans"><h2>The Ryokan Website</h2></a>
         </header>
@@ -46,7 +47,7 @@
 
       <div>
         <form action="/ryokans" method="GET" id="searchContainer">
-          <div>
+          <div class="buttonDiv">
             <input
               type="text"
               name="name"
@@ -55,17 +56,17 @@
               class="searchBar"
             />
           </div>
-          <div>
+          <div class="buttonDiv">
             <button class="button">search</button>
           </div>
         </form>
       </div>
       {% if login %}
       <div class="buttonContainer">
-        <div>
+        <div class="buttonDiv">
           <a href="/user/logout"><button class="button">Logout</button></a>
         </div>
-        <div>
+        <div class="buttonDiv">
           <a href="/user/myaccount"
             ><button class="button">My Account</button></a
           >
@@ -73,19 +74,20 @@
       </div>
       {% else %}
       <div class="buttonContainer">
-        <div>
+        <div class="buttonDiv">
           <a href="/user/signup"><button class="button">Signup</button></a>
         </div>
-        <div>
+        <div class="buttonDiv">
           <a href="/user/login"><button class="button">Login</button></a>
         </div>
       </div>
       {% endif %}
-      <div>
-        <h5>Hello {{ user.username }}</h5>
+      <div class="buttonDiv">
+        <h5>Hello {{ username }}</h5>
       </div>
     </div>
 
+    <!-- edit review -->
     <div id="mainContainer">
       <main>
         <div class="contentContainer">
