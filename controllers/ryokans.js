@@ -137,6 +137,8 @@ router.get("/new", (req, res) => {
   });
 });
 
+////////////////////////////
+// post new ryokan using AWS
 router.post("/new", upload.array("photos"), async (req, res) => {
   try {
     // reg ex to match
@@ -199,6 +201,9 @@ router.get("/:id", async (req, res) => {
     show: singleReview.length === 0 ? true : false,
   });
 });
+
+////////////////////////////
+// post new review using AWS
 
 router.post("/:id/reviews/new", upload.array("photos"), async (req, res) => {
   const id = req.params.id;
