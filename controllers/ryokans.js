@@ -9,7 +9,7 @@ const multer = require("multer");
 const AWS = require("aws-sdk"); //import AWS
 const fs = require("fs/promises");
 
-// Set the region
+// Set the region for AWS
 AWS.config.update({ region: "us-east-1" });
 // Create S3 service object
 const s3 = new AWS.S3({
@@ -34,6 +34,7 @@ router.use((req, res, next) => {
   }
 });
 
+// Ryokans main route
 router.get("/", async (req, res) => {
   // search bar result
   const { name } = req.query;
@@ -87,7 +88,7 @@ router.get("/", async (req, res) => {
     }
   }
 });
-
+/////////////////////////////////////////////////////////////
 // setup multer middleware to parse form-data
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -126,6 +127,7 @@ const readFile = async (file, urlArr) => {
 const removeFile = async (file) => {
   await fs.rm("uploads/" + file);
 };
+/////////////////////////////////////////////////////////////////////////////////////////////
 
 // create new ryokan route
 router.get("/new", (req, res) => {

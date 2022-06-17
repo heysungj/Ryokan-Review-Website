@@ -3,6 +3,11 @@
 **Fullstack Project**
 
 **Premise**
+Let's learn some foreign language first!
+
+Onsen: Hot Spring
+
+Ryokan: a type of traditional Japanese inn that typically features tatami-matted rooms
 
 I really love travel to Japan and enjoy local Onsen Ryokan there, this website is about ryokan reveiw
 
