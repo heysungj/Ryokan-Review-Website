@@ -199,6 +199,7 @@ router.get("/:id", async (req, res) => {
     userId: req.session.userId,
     id: req.params.id,
     show: singleReview.length === 0 ? true : false,
+    googleApiKey: process.env.GOOGLE_MAP_API_KEY,
   });
 });
 
